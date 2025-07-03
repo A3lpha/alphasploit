@@ -4,7 +4,19 @@ import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Play, Users, Calendar, ExternalLink, Youtube, X, MessageSquare, Clock, CheckCircle } from "lucide-react"
+import {
+  Play,
+  Users,
+  Calendar,
+  ExternalLink,
+  Youtube,
+  X,
+  MessageSquare,
+  Clock,
+  CheckCircle,
+  Rocket,
+  Eye,
+} from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -32,9 +44,9 @@ export function YouTubeWorkshops() {
       videoUrl: "https://youtube.com/watch?v=dQw4w9WgXcQ",
     },
     {
-      title: language === "so" ? "Qalabka Falanqeeyaha SOC: Habaynta SIEM" : "SIda loo Hacking gareyo : windows 7",
+      title: language === "so" ? "Qalabka Falanqeeyaha SOC: Habaynta SIEM" : "SOC Analyst Tools: SIEM Configuration",
       views: videoViews["fEKWkAbxrdo"] || 8200,
-      duration: "5 min",
+      duration: "32 min",
       thumbnail: "/placeholder.svg?height=200&width=300",
       description:
         language === "so"
@@ -58,7 +70,6 @@ export function YouTubeWorkshops() {
       videoId: "MShbP3OpASA",
       videoUrl: "https://youtu.be/MShbP3OpASA?si=T-eC0ewaQaSy-tY8",
     },
-    
   ]
 
   const upcomingWorkshops = [
@@ -169,26 +180,32 @@ export function YouTubeWorkshops() {
   }, [])
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gradient-to-br from-white to-primary/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* YouTube Content Section */}
         <div className="mb-20">
           <div className="text-center mb-16">
-            <Badge className="mb-6 bg-red-100 text-red-700 border-red-200">
+            <Badge className="mb-6 bg-red-100 text-red-700 border-red-200 shadow-cyber">
               <Youtube className="mr-2 h-4 w-4" />
               {t("youtube.badge")}
             </Badge>
             <h2 className="font-poppins font-bold text-4xl md:text-5xl text-text mb-6">{t("youtube.title")}</h2>
             <p className="font-roboto text-xl text-text/80 max-w-3xl mx-auto mb-8">{t("youtube.description")}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild className="bg-red-600 hover:bg-red-700 text-white rounded-full px-8">
+              <Button
+                asChild
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full px-8 shadow-cyber"
+              >
                 <a href="https://youtube.com/@alphasploit" target="_blank" rel="noopener noreferrer">
                   <Youtube className="mr-2 h-5 w-5" />
                   {t("youtube.visitChannel")}
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8">
+              <Button
+                asChild
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full px-8 shadow-cyber"
+              >
                 <a href="https://discord.gg/alphasploit" target="_blank" rel="noopener noreferrer">
                   <MessageSquare className="mr-2 h-5 w-5" />
                   {t("youtube.joinDiscord")}
@@ -200,7 +217,10 @@ export function YouTubeWorkshops() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentVideos.map((video, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <Card
+                key={index}
+                className="group hover:shadow-cyber-lg transition-all duration-300 overflow-hidden border-none bg-gradient-to-br from-white to-primary/5"
+              >
                 <div className="relative cursor-pointer" onClick={() => openVideoModal(video.videoId)}>
                   <div className="relative">
                     <img
@@ -211,29 +231,34 @@ export function YouTubeWorkshops() {
                         e.currentTarget.src = video.thumbnail || "/placeholder.svg"
                       }}
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                      <div className="bg-red-600 rounded-full p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 transition-all duration-300 flex items-center justify-center">
+                      <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-full p-4 group-hover:scale-110 transition-transform duration-300 shadow-cyber animate-pulse-glow">
                         <Play className="h-8 w-8 text-white fill-current" />
                       </div>
                     </div>
                   </div>
-                  <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                  <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
                     {video.duration}
                   </div>
-                  <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded flex items-center">
+                  <div className="absolute top-2 left-2 bg-gradient-to-r from-red-600 to-red-700 text-white text-xs px-2 py-1 rounded flex items-center shadow-cyber">
                     <Youtube className="h-3 w-3 mr-1" />
                     YouTube
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-poppins font-semibold text-lg text-text mb-2 line-clamp-2">{video.title}</h3>
+                  <h3 className="font-poppins font-semibold text-lg text-text mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                    {video.title}
+                  </h3>
                   <p className="font-roboto text-sm text-text/70 mb-3 line-clamp-2">{video.description}</p>
                   <div className="flex items-center justify-between text-sm text-text/60">
-                    <span>{formatViews(video.views)}</span>
+                    <span className="flex items-center">
+                      <Eye className="h-3 w-3 mr-1" />
+                      {formatViews(video.views)}
+                    </span>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-red-600 hover:text-red-700"
+                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
                       onClick={() => openVideoModal(video.videoId)}
                     >
                       {t("youtube.watchNow")}
@@ -248,7 +273,7 @@ export function YouTubeWorkshops() {
         {/* Workshops Section */}
         <div>
           <div className="text-center mb-16">
-            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
+            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 shadow-cyber">
               <Users className="mr-2 h-4 w-4" />
               {t("youtube.workshops.badge")}
             </Badge>
@@ -260,19 +285,22 @@ export function YouTubeWorkshops() {
 
           {/* Upcoming Workshops */}
           <div className="mb-16">
-            <h3 className="font-poppins font-bold text-2xl text-text mb-8 text-center">{t("youtube.upcoming")}</h3>
+            <h3 className="font-poppins font-bold text-2xl text-text mb-8 text-center flex items-center justify-center">
+              <Rocket className="mr-2 h-6 w-6 text-primary" />
+              {t("youtube.upcoming")}
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {upcomingWorkshops.map((workshop, index) => (
                 <Card
                   key={index}
-                  className="bg-gradient-to-br from-primary/5 to-accent/5 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                  className="bg-gradient-to-br from-primary/5 to-accent/5 hover:shadow-cyber-lg transition-all duration-300 cursor-pointer group border-none"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
-                      <Badge className="bg-primary/10 text-primary">{workshop.type}</Badge>
-                      <Calendar className="h-5 w-5 text-primary" />
+                      <Badge className="bg-primary/10 text-primary border-primary/20">{workshop.type}</Badge>
+                      <Calendar className="h-5 w-5 text-primary group-hover:text-accent transition-colors duration-300" />
                     </div>
-                    <CardTitle className="font-poppins font-bold text-xl text-text group-hover:text-primary transition-colors">
+                    <CardTitle className="font-poppins font-bold text-xl text-text group-hover:text-primary transition-colors duration-300">
                       {workshop.title}
                     </CardTitle>
                   </CardHeader>
@@ -295,7 +323,10 @@ export function YouTubeWorkshops() {
                         <span className="font-roboto text-sm font-medium text-accent">{workshop.spots}</span>
                       </div>
                     </div>
-                    <Button asChild className="w-full bg-primary hover:bg-primary/90 rounded-full">
+                    <Button
+                      asChild
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 rounded-full shadow-cyber"
+                    >
                       <Link href={`/workshop/${workshop.id}`}>{t("youtube.viewDetails")}</Link>
                     </Button>
                   </CardContent>
@@ -306,12 +337,15 @@ export function YouTubeWorkshops() {
 
           {/* Past Workshops */}
           <div className="mb-12">
-            <h3 className="font-poppins font-bold text-2xl text-text mb-8 text-center">{t("youtube.completed")}</h3>
+            <h3 className="font-poppins font-bold text-2xl text-text mb-8 text-center flex items-center justify-center">
+              <CheckCircle className="mr-2 h-6 w-6 text-cyber-green" />
+              {t("youtube.completed")}
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {closedWorkshops.map((workshop, index) => (
                 <Card
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200 hover:shadow-md transition-all duration-300"
+                  className="bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200 hover:shadow-lg transition-all duration-300"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
@@ -365,9 +399,13 @@ export function YouTubeWorkshops() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center glass rounded-2xl p-8 shadow-cyber">
             <p className="font-roboto text-text/70 mb-6">{t("youtube.customWorkshops")}</p>
-            <Button asChild variant="outline" className="rounded-full px-8">
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-primary text-primary hover:bg-primary hover:text-white shadow-cyber bg-transparent"
+            >
               <Link href="/contact">{t("youtube.contactCustom")}</Link>
             </Button>
           </div>
@@ -376,11 +414,11 @@ export function YouTubeWorkshops() {
 
       {/* Video Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="relative w-full max-w-4xl bg-white rounded-lg overflow-hidden">
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-4xl glass rounded-lg overflow-hidden shadow-cyber-lg">
             <button
               onClick={closeVideoModal}
-              className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
+              className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors backdrop-blur-sm"
             >
               <X className="h-6 w-6" />
             </button>

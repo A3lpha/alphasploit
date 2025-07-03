@@ -77,27 +77,27 @@ const workshops = {
       { time: "12:45 - 1:00 PM", topic: "Q&A & Wrap-up" },
     ],
     presenter: {
-      name: "Adnan jafar",
+      name: "Alex Thompson",
       title: "Lead Cybersecurity Instructor & Founder",
       image: "/images/wolf-warrior-presenter.png",
-      bio: "Adnan jafar is a seasoned cybersecurity professional with over 15 years of experience in penetration testing, incident response, and security consulting. He holds multiple industry certifications including CISSP, CEH, and OSCP. Alex has conducted security assessments for Fortune 500 companies and government agencies.",
+      bio: "Alex Thompson is a seasoned cybersecurity professional with over 15 years of experience in penetration testing, incident response, and security consulting. He holds multiple industry certifications including CISSP, CEH, and OSCP. Alex has conducted security assessments for Fortune 500 companies and government agencies.",
       credentials: ["CISSP", "CEH", "OSCP", "GCIH"],
       experience: "15+ years in cybersecurity",
       specialties: ["Penetration Testing", "Incident Response", "Security Architecture"],
     },
     testimonials: [
       {
-        name: "omar abdi",
+        name: "Sarah Johnson",
         role: "Security Analyst",
         content:
-          "adnan's advanced penetration testing workshop was incredible. The hands-on labs were challenging and realistic.",
+          "Alex's advanced penetration testing workshop was incredible. The hands-on labs were challenging and realistic.",
         rating: 5,
       },
       {
-        name: "mohamed hassan",
+        name: "Mike Chen",
         role: "IT Manager",
         content:
-          "Best workshop I've attended. adnan's expertise and teaching style made complex topics easy to understand.",
+          "Best workshop I've attended. Alex's expertise and teaching style made complex topics easy to understand.",
         rating: 5,
       },
     ],
@@ -152,23 +152,23 @@ const workshops = {
       { time: "3:00 - 4:00 PM", topic: "Hands-on Scenario & Q&A" },
     ],
     presenter: {
-      name: "adnan jafar",
+      name: "Sarah Mitchell",
       title: "Incident Response Specialist & Co-Founder",
       image: "/images/wolf-warrior-presenter.png",
-      bio: "adnan jafar is a certified incident response specialist with 12+ years of experience leading IR teams for major corporations. She has handled hundreds of security incidents and specializes in advanced persistent threats and ransomware response.",
+      bio: "Sarah Mitchell is a certified incident response specialist with 12+ years of experience leading IR teams for major corporations. She has handled hundreds of security incidents and specializes in advanced persistent threats and ransomware response.",
       credentials: ["GCIH", "GCFA", "CISSP", "CISM"],
       experience: "12+ years in incident response",
       specialties: ["Incident Response", "Digital Forensics", "Threat Hunting"],
     },
     testimonials: [
       {
-        name: "xabibo ali",
+        name: "David Kim",
         role: "CISO",
-        content: "adnan's incident response training transformed our team's capabilities. Highly recommended!",
+        content: "Sarah's incident response training transformed our team's capabilities. Highly recommended!",
         rating: 5,
       },
       {
-        name: "leylo omar",
+        name: "Lisa Wang",
         role: "Security Engineer",
         content: "Excellent practical training with real-world scenarios. Worth every penny.",
         rating: 5,
@@ -222,23 +222,23 @@ const workshops = {
       { time: "4:15 - 5:00 PM", topic: "Career Paths & Next Steps" },
     ],
     presenter: {
-      name: "salman nur",
+      name: "Marcus Chen",
       title: "Cybersecurity Educator & Technical Lead",
       image: "/images/wolf-warrior-presenter.png",
-      bio: "salman nur is passionate about cybersecurity education and has helped over 500 beginners start their cybersecurity careers. With 10+ years in the field, he specializes in making complex security concepts accessible to newcomers.",
+      bio: "Marcus Chen is passionate about cybersecurity education and has helped over 500 beginners start their cybersecurity careers. With 10+ years in the field, he specializes in making complex security concepts accessible to newcomers.",
       credentials: ["Security+", "CySA+", "CISSP", "CTM"],
       experience: "10+ years in cybersecurity education",
       specialties: ["Security Education", "Career Mentoring", "Technical Training"],
     },
     testimonials: [
       {
-        name: "jaabir ali",
+        name: "Jennifer Lopez",
         role: "Career Changer",
-        content: "salman made cybersecurity approachable for a complete beginner like me. Great introduction!",
+        content: "Marcus made cybersecurity approachable for a complete beginner like me. Great introduction!",
         rating: 5,
       },
       {
-        name: "saed omar",
+        name: "Tom Wilson",
         role: "Student",
         content: "Perfect starting point for anyone interested in cybersecurity. Highly recommended!",
         rating: 5,
@@ -290,10 +290,10 @@ export default function WorkshopPage({ params }: { params: { id: string } }) {
 
     switch (platform) {
       case "facebook":
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://m.facebook.com/61555331334130")}`
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`
         break
       case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent("https://x.com/AlphaSploit")}`
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(currentUrl)}`
         break
       case "linkedin":
         shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`
