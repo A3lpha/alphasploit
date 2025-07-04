@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Zap } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { useLanguage } from "@/contexts/language-context"
 
 export function Navigation() {
@@ -32,6 +31,7 @@ export function Navigation() {
     { href: "/about", label: t("nav.about") },
     { href: "/services", label: t("nav.services") },
     { href: "/workshops", label: t("nav.workshops") },
+    { href: "/blog", label: "Blog & Writeups" },
     { href: "/contact", label: t("nav.contact") },
   ]
 
@@ -39,8 +39,8 @@ export function Navigation() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg border-b"
-          : "bg-background/90 backdrop-blur-sm shadow-md border-b"
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b"
+          : "bg-white/90 backdrop-blur-sm shadow-md border-b"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,8 +49,8 @@ export function Navigation() {
           <Link href="/" className="flex items-center space-x-3">
             <img src="/images/alphasploit-logo-new.png" alt="AlphaSploit Logo" className="h-10 w-auto" />
             <div className="hidden sm:block">
-              <div className="font-bold text-xl text-foreground">AlphaSploit</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Cybersecurity Training</div>
+              <div className="font-bold text-xl text-gray-900">AlphaSploit</div>
+              <div className="text-xs text-gray-600 uppercase tracking-wider">Cybersecurity Training</div>
             </div>
           </Link>
 
@@ -61,7 +61,7 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={`font-medium transition-colors ${
-                  pathname === item.href ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  pathname === item.href ? "text-blue-600" : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {item.label}
@@ -70,7 +70,6 @@ export function Navigation() {
 
             <div className="flex items-center space-x-4">
               <LanguageSwitcher />
-              <ThemeToggle />
               <Button asChild>
                 <Link href="/contact">
                   <Zap className="h-4 w-4 mr-2" />
@@ -82,7 +81,6 @@ export function Navigation() {
 
           {/* Mobile Controls */}
           <div className="lg:hidden flex items-center space-x-2">
-            <ThemeToggle />
             <LanguageSwitcher />
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -92,7 +90,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden border-t bg-background/95 backdrop-blur-md">
+          <div className="lg:hidden border-t bg-white/95 backdrop-blur-md">
             <div className="px-2 pt-2 pb-4 space-y-1">
               {navItems.map((item) => (
                 <Link
@@ -100,8 +98,8 @@ export function Navigation() {
                   href={item.href}
                   className={`block px-4 py-3 font-medium transition-colors ${
                     pathname === item.href
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-blue-600 bg-blue-50"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
                   {item.label}
